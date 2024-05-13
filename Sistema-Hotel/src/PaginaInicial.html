@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-bt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+</head>
+<body>
+    <h1>Bem-vindo à Página Inicial</h1>
+    <button id="botao1">Buscar Hoteis</button>
+    <button id="botao2">Criar Reserva</button>
+    <button id="botao3">Cancelar Reserva</button>
+
+
+    <script>
+        // Adicionando funcionalidades aos botões
+document.getElementById('botao1').addEventListener('click', function() {
+    window.location.href = '/ProcurarHotel.html';
+  });
+  
+  document.getElementById('botao2').addEventListener('click', function() {
+    alert('Você clicou no Botão 2!');
+  });
+  
+  document.getElementById('botao3').addEventListener('click', function() {
+    alert('Você clicou no Botão 3!');
+  });
+  
+    </script>
+</body>
+</html>

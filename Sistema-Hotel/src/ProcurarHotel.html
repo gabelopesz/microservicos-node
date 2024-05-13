@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procurar Hotel</title>
+</head>
+<body>
+    <h1>Procurar Hotel</h1>
+    
+    <label for="data">Data:</label>
+    <input type="date" id="data" name="data"><br><br>
+
+    <label for="localizacao">Localização:</label>
+    <select id="localizacao" name="localizacao">
+
+    </select><br><br>
+
+    <label for="disponibilidade">Disponibilidade:</label>
+    <span id="disponibilidadeIndicativo"></span><br><br>
+
+    <div id="hoteisDisponiveis">
+        <h2>Hoteis Disponíveis:</h2>
+        <ul id="listaHoteis">
+            <!-- Lista de hoteis disponíveis será exibida aqui -->
+        </ul>
+    </div>
+
+    <button id="voltar">Voltar</button>
+    <button id="buscar">Buscar</button>
+
+    <script>
+        document.getElementById('voltar').addEventListener('click', function() {
+            window.location.href = '/PaginaInicial.html';
+        });
+
+        document.getElementById('buscar').addEventListener('click', function() {
+            const dataSelecionada = document.getElementById('data').value;
+            const localizacao = document.getElementById('localizacao').value;
+
+            if (dataSelecionada === '') {
+                alert('Por favor, selecione uma data.');
+                return;
+            }
+
+            const hoje = new Date();
+            const data = new Date(dataSelecionada);
+            
+            if (data < hoje) {
+                alert('Por favor, selecione uma data igual ou posterior ao dia atual.');
+                return;
+            }
+
+            const hoteisDisponiveis = hoteis.filter(hotel => {
+                return hotel.disponibilidade && hotel.cidade === localizacao;
+            });
+
+            const listaHoteis = document.getElementById('listaHoteis');
+            listaHoteis.innerHTML = ''; // Limpa a lista antes de adicionar os novos hotéis
+
+            if (hoteisDisponiveis.length > 0) {
+                hoteisDisponiveis.forEach(hotel => {
+                    const itemLista = document.createElement('li');
+                    itemLista.textContent = hotel.nome;
+                    listaHoteis.appendChild(itemLista);
+                });
+            } else {
+                const itemLista = document.createElement('li');
+                itemLista.textContent = 'Nenhum';
+                listaHoteis.appendChild(itemLista);
+            }
+        });
+
+        const hoteis = [
+            { nome: 'Hotel Alphavile', disponibilidade: true, cidade: 'Quirinopolis' },
+            { nome: 'Hotel Belo', disponibilidade: true, cidade: 'Rio Verde' },
+            { nome: 'Hotel Citrus', disponibilidade: false, cidade: 'Tangamandapio' },
+            { nome: 'Hotel Maravilha', disponibilidade: true, cidade: 'Quirinopolis' }
+        ];
+
+        const selectLocalizacao = document.getElementById('localizacao');
+        const cidadesUnicas = [];
+
+        hoteis.forEach((hotel) => {
+            if (!cidadesUnicas.includes(hotel.cidade)) {
+                cidadesUnicas.push(hotel.cidade);
+                const option = document.createElement('option');
+                option.textContent = hotel.cidade;
+                option.value = hotel.cidade;
+                selectLocalizacao.appendChild(option);
+            }
+        });
+
+        const disponibilidadeIndicativo = document.getElementById('disponibilidadeIndicativo');
+
+        function setDisponibilidadeIndicativo() {
+            const localizacaoSelecionada = document.getElementById('localizacao').value;
+            const hoteisNaLocalizacao = hoteis.filter(hotel => hotel.cidade === localizacaoSelecionada);
+            const todosDisponiveis = hoteisNaLocalizacao.every(hotel => hotel.disponibilidade);
+            const algumDisponivel = hoteisNaLocalizacao.some(hotel => hotel.disponibilidade);
+
+            if (todosDisponiveis) {
+                disponibilidadeIndicativo.textContent = 'Disponível';
+            } else if (algumDisponivel) {
+                disponibilidadeIndicativo.textContent = 'Parcialmente disponível';
+            } else {
+                disponibilidadeIndicativo.textContent = 'Indisponível';
+            }
+        }
+
+        setDisponibilidadeIndicativo();
+        selectLocalizacao.addEventListener('change', setDisponibilidadeIndicativo);
+    </script>
+</body>
+</html>
