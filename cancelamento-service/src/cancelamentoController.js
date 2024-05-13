@@ -1,5 +1,5 @@
 const axios = require('axios');
-const URL_RESERVAS_SERVICE = 'http://localhost:3000/reservas';
+const URL_RESERVAS_SERVICE = 'http://localhost:3001/reservas';
 
 exports.cancelarReserva = async (req, res) => {
     const { id } = req.params;
