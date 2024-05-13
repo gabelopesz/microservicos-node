@@ -1,17 +1,18 @@
-### 💻 Microserviços-node 
+
+### 💻 Microsserviços-node 
 
 Um sistema de reservas de hotéis desenvolvido utilizando Node.js e microsserviços!
 
-### Objetivo:
+## Objetivo:
 
 Oferecer uma plataforma para que os usuários reservem quartos de hotel de maneira simples e eficiente.
 
-### Tecnologias:
+## Tecnologias:
 
 * **Node.js** (https://nodejs.org/en)
 * **ExpressJS** (https://expressjs.com/)
 
-### O que são Microsserviços?
+## O que são Microsserviços?
 
 A arquitetura de microsserviços é um estilo que estrutura um aplicativo como uma coleção de serviços pequenos, independentes e modulares. Cada microsserviço possui uma responsabilidade bem definida e se comunica com outros serviços através de interfaces bem documentadas. No nosso projeto, os serviços são:
 
@@ -19,7 +20,7 @@ A arquitetura de microsserviços é um estilo que estrutura um aplicativo como u
 * **Busca de hotel**
 * **Cancelamento de reserva**
 
-### Conteúdo
+## Conteúdo
 
 * **Introdução à Arquitetura de Microsserviços:**
     * Microsserviços são uma maneira de dividir um aplicativo em serviços pequenos e independentes.
@@ -119,27 +120,30 @@ Foi escolhida a arquitetura de microserviços pois ela permite escalar partes es
 
 
 
-Melhorias e Expansões do Sistema:
+## Testando a API com Swagger
 
-  -  Adotar um design responsivo para melhorar a experiência em dispositivos móveis.
-    
-  - Simplificar a interface para uma navegação mais intuitiva.
+### Pré-requisitos
+Para acessar a documentação Swagger da API, você precisará ter acesso local às seguintes URLs:
 
-  - Utilizar ícones e cores consistentes para facilitar a compreensão.
-   
-  - Oferecer sugestões inteligentes de quartos com base nas preferências do usuário.
-             
-  - Integrar um sistema de avaliações e feedback para melhorar o serviço
-               
-  - Reforçar a segurança dos dados do usuário através de criptografia adequada.
-
-  - Implementar medidas de proteção contra ataques de SQL injection e XSS.
-
-  - Garantir conformidade com regulamentações de privacidade, como GDPR ou LGPD
+- Serviço de Busca: http://localhost:3000/api-docs
+- Serviço de Reserva: http://localhost:3001/api-docs
+- Serviço de Cancelamento: http://localhost:3002/api-docs
 
 
+### Como Acessar
+Acesso à Documentação:
+Para começar, abra um navegador de sua escolha e insira uma das URLs fornecidas. Isso o levará à interface do Swagger UI, onde você pode ver todos os endpoints disponíveis.
 
-Tarefa 4.3:
-Documentação dos Endpoints:
-Na reserva para fazer a criação de reservas foi utilizado o método Post, já para listar as reservas foi utilizado o método get. 
-No cancelamento de reserva foi usado o método delete para deletar reservas não desejadas.
+### Explorando Endpoints:
+Na página do Swagger UI, você pode expandir cada endpoint para ver detalhes como métodos HTTP suportados, parâmetros de requisição, respostas esperadas e modelos de dados.
+
+### Executando Testes:
+ Para testar um endpoint:
+
+- Selecione o método desejado (GET, POST, PUT, DELETE, etc.).
+- Preencha os parâmetros necessários, se houver.
+- Clique no botão Try it out!.
+- Após configurar todos os parâmetros necessários, clique em Execute.
+- Você verá a resposta da API diretamente na interface do Swagger, incluindo o código de status, o corpo da resposta e os cabeçalhos.
+- Interpretação dos Resultados:
+Com a resposta da API exibida, analise os dados retornados ou as mensagens de erro. Isso pode ajudar no diagnóstico de problemas ou na confirmação do comportamento esperado da API.
